@@ -1,0 +1,147 @@
+// You are using Java
+//Day-28-09-2024
+class A{
+    public static void main(String[] args){
+        //System.out.println(length("hello akash"));
+        //System.out.println(vowel_consonant("hello akash"));
+       // System.out.println(Upper_Lower("hello akash"));
+       //splitt("hello akash");
+       replace_With("301, tulsi vatika");
+    }
+    //	Write a program to find the length of a given string without using the length() method.
+    static int length(String str){
+        char[] arr=str.toCharArray();
+        int count=0;
+        for(int i=0;i<arr.length;i++){
+            count++;
+        }
+        return count;
+    }
+    //	Write a program that counts the number of vowels and consonants in a given string.
+    static String vowel_consonant(String str){
+        char[] arr=str.toCharArray(); 
+        int countVowels=0;
+        int countConst=0;
+        for(int i=0;i<arr.length;i++){
+            char ch=arr[i];
+            if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'){
+              countVowels++;  
+            }else{
+               countConst++;
+            }
+        }
+        return "Vowels: " + countVowels + ", Consonants: " + countConst;
+        
+    }
+    //	Write a program to convert a given string to uppercase and lowercase.
+    static String Upper_Lower(String str){
+         char[] arr1=str.toCharArray();
+         for(int i=0;i<arr1.length;i++){
+            arr1[i]=Character.toUpperCase(arr1[i]); 
+         }
+         String str1=String.valueOf(arr1);
+         
+         char[] arr2=str.toCharArray();
+         for(int i=0;i<arr2.length;i++){
+            arr2[i]=Character.toUpperCase(arr2[i]); 
+         }
+         String str2=String.valueOf(arr2);
+         return "UpperCase: " + str1 + " LoweCase: " + str2;
+    }
+    //•	Write a Java program to split a string into individual words based on spaces.
+     static void splitt(String str){ 
+        String[] arr=str.split(" ");
+        for(String str1: arr){
+            System.out.println(str1);
+        }
+        
+     }
+    //replace the digit in string to #
+     static void replace_With(String str){ 
+         char[] arr=str.toCharArray();
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>='0' && arr[i]<='9'){
+                arr[i]='#';
+            } 
+         }
+         String ans=String.valueOf(arr);
+         System.out.println(ans);
+     }
+}
+
+
+// You are using Java
+import java.util.Scanner;
+
+//  class indexNum {
+//      public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         String str=sc.nextLine();
+//         System.out.println("Enter String:");
+//         int idx=sc.nextInt();
+//         System.out.println("Enter index num:");
+//         indexPosition(str,idx);
+//     }
+//     static void indexPosition(String str,int idx){
+//         char[] arr=str.toCharArray();
+//          System.out.println(arr[idx]);
+//     }
+// }
+// import java.util.Scanner;
+// class Pattern {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         int n = sc.nextInt();
+//         for (int row = 1; row <= n; row++) {
+//             for (int col = 1;col <= i;col++) {
+//                 System.out.print("*");
+//             }
+//             System.out.println();
+//         }
+//         for (int row = n - 1; row >= 1; row--) {
+//             for (int col= 1; col<= i; col++) {
+//                 System.out.print("*");
+//             }
+//             System.out.println();
+//         }
+        
+//         sc.close();
+//     }
+// }
+import java.util.Scanner;
+class Email {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        System.out.println("Enter Email:");
+        int count=0,a=0,b=0;
+         char[] arr=str.toCharArray();
+         for(int i=0;i<arr.length;i++){
+             if(arr[i]=='@'){
+                  a=i;
+                 count++;
+             }
+             if(arr[i]=='.'){
+                  b=i;
+             }
+         }
+         if(count>1){
+             System.out.println("Invalid");
+         }else{
+            if(a<b){
+               System.out.println("Invalid");  
+            }else{
+                 System.out.println("Valid");
+            }
+         }
+       }   
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
