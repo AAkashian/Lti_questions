@@ -1,0 +1,89 @@
+// You are using Java
+import java.util.*;
+class main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        double ans=sc.nextDouble();
+        if(ans<8000){
+            System.out.println("No discount applicable");
+        }else{
+            System.out.println(ans*0.9);
+        }
+        
+    }
+}
+
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int hoursWorked = sc.nextInt();
+        double monthlySalary = sc.nextDouble();
+        
+        double weeklySalary = monthlySalary / 4;
+        double hourlyWage = weeklySalary / 40;
+        double totalPay = 0;
+        
+        if (hoursWorked > 40) {
+            int overtimeHours = hoursWorked - 40;
+            double overtimeRate = (hourlyWage >= 500) ? hourlyWage * 1.5 : hourlyWage * 2;
+            totalPay = (40 * hourlyWage) + (overtimeHours * overtimeRate);
+        } else {
+            totalPay = hoursWorked * hourlyWage;
+        }
+        
+        System.out.printf("%.1f", totalPay);
+    }
+}
+
+// You are using Java
+import java.util.*;
+class main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        
+        int rev=sc.nextInt();
+        int types=sc.nextInt();
+        int total=0;
+        
+        for(int i=0;i<types;i++){
+           total +=sc.nextInt(); 
+        }
+        
+        double ans=total-rev;
+        
+        if(total>rev){
+          System.out.printf("Amount to cut down: %.2f%n ",ans);  
+        }else if(total<rev){
+             System.out.printf("Remaining Amount: %.2f%n ",(-ans));
+        }else{
+             System.out.println("Perfect");
+        }
+    }
+}
+
+// You are using Java
+import java.util.Scanner;
+class main{
+    public static void main(String[] args){
+        
+        Scanner sc=new Scanner(System.in);
+        int temp=sc.nextInt();
+        String str=sc.next();
+        
+        if(temp>30 && str.equals("sunny")){
+           System.out.println("Hot and Sunny"); 
+        }else if(temp>20 && temp<30 && str.equals("sunny")){
+           System.out.println("Warm and Sunny");  
+        }else if(temp<20  && str.equals("sunny")){
+          System.out.println("Cool and Sunny");   
+        }else if(str.equals("cloudy")){
+           System.out.println("Cloudy with chances of rain"); 
+        }else if(str.equals("rainy")){
+           System.out.println("Rainy with thunderstorms"); 
+        }
+    }
+}
+
