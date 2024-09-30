@@ -1,0 +1,83 @@
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String[] arr={"john","Alice","Bob","Emily","David"};
+        String sname=sc.next();
+        if(sname.equals("john")||sname.equals("Bob")||sname.equals("Alice")||sname.equals("Emily")||sname.equals("David")){
+            System.out.println("Found");
+        }else{
+           System.out.println("Not Found"); 
+        }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        int arr[][]=new int[n][m];
+        int sum=0;
+        for(int i=0;i<3;i++){
+          for(int j=0;j<3;j++){
+             arr[i][j]=sc.nextInt(); 
+            sum +=arr[i][j];
+         }  
+        }
+        System.out.println(sum);
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int ans=0,sum=0;
+        int arr[]=new int[7];
+        for(int i=0;i<7;i++){
+            arr[i]=sc.nextInt();
+        }
+        int max=arr[0];
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+                ans=i;
+               
+            }
+             sum+=arr[i];
+        }
+        System.out.println(sum);
+        System.out.println(ans+1);
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int ans=0,sum=0;
+        double res=0;
+        int arr[]=new int[7];
+        for(int i=0;i<7;i++){
+            arr[i]=sc.nextInt();
+        }
+        int max=arr[0];
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+                ans=i+1;
+               
+            }
+             sum+=arr[i];
+             res=sum/7;
+        }
+        System.out.println("Average temperature: "+res);
+        System.out.println("Day with highest temperature: "+ans);
+    }
+}
