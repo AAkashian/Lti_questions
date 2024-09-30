@@ -81,3 +81,59 @@ class a{
         System.out.println("Day with highest temperature: "+ans);
     }
 }
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        boolean ans=false;
+        ans=isPrime(n);
+        System.out.println(ans);
+    }
+    static boolean isPrime(int n){
+        int i=2;
+        while(i<n){
+            if(n%i==0){
+                return false;
+            }
+          i++;  
+        }
+        return true;
+    }
+    
+}
+// You are using Java
+// You are using Java
+import java.util.*;
+class factorial{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int i=1;
+       int ans=1;
+       do{
+         ans=ans*i;
+         i++;
+       }while(i<=n);
+       System.out.println(ans);
+    }
+    
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int rem=0,sum=0;
+       do{
+        rem=n%10;
+        sum=sum*10+rem;
+        n/=10;
+       }while(n>0);
+       System.out.println(sum);
+    }
+    
+}
