@@ -158,3 +158,100 @@ class a{
        n--;
     }
 }
+
+// You are using Java
+import java.util.Scanner;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        int arr[]=new int[num];
+        for(int i=0;i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+        int ans=findmax(arr);
+        System.out.println("The maximum value in the array is: "+ans);
+    }
+    static int findmax(int[] arr){
+        int max=arr[0];
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        return max;
+    }
+}
+// You are using Java
+import java.util.Scanner;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        int arr[]=new int[num];
+        for(int i=0;i<arr.length;i++){
+            arr[i]=sc.nextInt();
+        }
+        reverse(arr);
+         for(int i=0;i<arr.length;i++){
+           System.out.println(arr[i]);
+        }
+        
+    }
+    static void reverse(int[] arr){
+        int start=0;
+        int end=arr.length-1;
+        for(int i=start;i<end;i++){
+            int temp=arr[start];
+            arr[start]=arr[end];
+            arr[end]=temp;
+            start++;
+            end--;
+        }
+    }
+}
+
+// You are using Java
+import java.util.Scanner;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int[] arr={1,2,3,4,5};
+        int sum=0;
+        for(int i=0;i<arr.length;i++){
+            sum +=arr[i];
+        }
+        System.out.println(sum);
+    }
+}
+
+// You are using Java
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int num1=sc.nextInt();
+        int arr1[]=new int[num1];
+        for(int i=0;i<arr1.length;i++){
+            arr1[i]=sc.nextInt();
+        }
+        int num2=sc.nextInt();
+        int arr2[]=new int[num2];
+        for(int i=0;i<arr2.length;i++){
+            arr2[i]=sc.nextInt();
+        }
+        int num3=num1+num2;
+        int ans[]=concat(arr1,arr2);
+        for(int l=0;l<ans.length;l++){
+            System.out.print(ans[l]+" ");
+        }
+    }static int[] concat(int []arr1,int []arr2){
+        int[]ans =new int[arr1.length+arr2.length];
+        System.arraycopy(arr1,0,ans,0,arr1.length);
+         System.arraycopy(arr2,0,ans,arr1.length,arr2.length);
+    return ans;
+        
+    }
+   
+}
