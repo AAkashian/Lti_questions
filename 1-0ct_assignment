@@ -99,3 +99,74 @@ class a{
           }
     }
 }
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.next();
+        String str2=sc.next();
+        char arr1[]=str1.toCharArray();
+         char arr2[]=str2.toCharArray();
+         Arrays.sort(arr1);
+         Arrays.sort(arr2);
+         String ans1=Arrays.toString(arr1);
+         String ans2=Arrays.toString(arr2);
+         if(ans1.equals(ans2)){
+            System.out.println("Anagrams"); 
+         }else{
+             System.out.println("Not Anagrams"); 
+         }
+    }
+}
+
+// You are using Java
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.nextLine();
+        char[] arr=str1.toCharArray();
+        for(int i=0;i<arr.length;i=i+2){
+            char ch=arr[i];
+            arr[i]=Character.toUpperCase(ch);
+        }
+        System.out.println(new String(arr));
+       
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine().toLowerCase();
+       Set<Character> hset=new HashSet<>();
+       for(char ch: str.toCharArray()){
+           if(Character.isLetter(ch)){
+           hset.add(ch);
+           }
+       }
+       if(hset.size()==26){
+           System.out.println("Pangram");
+       }else{
+         System.out.println("Not Pangram");  
+       }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        String[] arr=str.split(" ");
+        for(int i=arr.length-1;i>=0;i--){
+            System.out.println(new String(arr[i]+" "));
+        }
+    }
+}
