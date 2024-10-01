@@ -1,0 +1,101 @@
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+            Scanner sc=new Scanner (System.in);
+        int size=sc.nextInt();
+        int idx=0;
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int element=sc.nextInt();
+        for(int i=0;i<size;i++){
+            if(arr[i]==element){
+                idx=i;
+                System.out.println("Found at index "+i);
+            }
+        }
+    }
+}
+
+// You are using Java
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+            Scanner sc=new Scanner (System.in);
+        int size=sc.nextInt();
+        int idx=0;
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+       bubbelsort(arr);
+        for(int i=0;i<size;i++){
+           System.out.println(arr[i]);
+        }
+    }
+    static void bubbelsort(int arr[]){
+        int n=arr.length;
+        for(int i=0;i<n-1;i++){
+           for(int j=0;j<n-1-i;j++){
+            if(arr[j]>arr[j+1]){
+                int temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+          } 
+        }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner (System.in);
+        int size=sc.nextInt();
+        sc.nextLine();
+        String arr[]=new String[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextLine();
+        }
+       for(int i=0;i<size-1;i++){
+         for(int j=0;j<size-1;j++){
+          if(arr[j].compareTo(arr[j+1])>0){
+              String temp=arr[j];
+              arr[j]=arr[j+1];
+              arr[j+1]=temp;
+          } 
+        }  
+       }
+       for(String str:arr){
+           System.out.println(str);
+       }
+    }
+}
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner (System.in);
+        String str=sc.nextLine();
+        boolean b=false;
+        int idx=0;
+        char arr[]=str.toCharArray();
+        char ch=sc.next().charAt(0);
+        for(char i=0;i<arr.length;i++){
+          if(arr[i]==ch){
+              b=true;
+              idx=i;
+          }
+          
+        }
+        if(b==true){
+          System.out.println("Found at index "+idx);
+          }else{
+              System.out.println("Not Found"); 
+          }
+    }
+}
