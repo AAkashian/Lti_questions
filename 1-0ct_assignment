@@ -170,3 +170,96 @@ class a{
         }
     }
 }
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+       StringBuilder sb=new StringBuilder();
+       sb.append(str);
+       sb.reverse();
+       String ans=sb.toString();
+       if(str.equals(ans)){
+           System.out.println("Palindrome");
+       }else{
+          System.out.println("Not Palindrome"); 
+       }
+    } 
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        int []count=new int[26];
+        for(int i=0;i<str.length();i++){
+            char ch=str.charAt(i);
+            count[ch-'a']++;
+        }
+         for(int i=0;i<count.length;i++){
+            if(count[i]>0){
+                System.out.println((char)(i+'a')+": "+count[i]);
+            }
+        }
+    }
+    
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String input=sc.nextLine();
+        String inputString[]=input.split(" ");
+        int []arr=new int[inputString.length];
+        
+        for(int i=0;i<arr.length;i++){
+            arr[i]=Integer.parseInt(inputString[i]);
+        }
+        
+       int largest=LargestElementFinder(arr);
+       System.out.println("Largest Element: "+largest);
+    }
+    static int LargestElementFinder(int arr[]){
+        int largest=arr[0];
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>largest){
+                largest=arr[i];
+            }
+        }
+        return largest;
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String input=sc.nextLine();
+        String inputString[]=input.split(" ");
+        int []arr=new int[inputString.length];
+        
+        for(int i=0;i<arr.length;i++){
+            arr[i]=Integer.parseInt(inputString[i]);
+        }
+        double ans=calculateAverage(arr);
+        System.out.println("Average: "+ans);
+         
+    }
+    static double calculateAverage(int []arr){
+        double avarage=0;
+        int sum=0,count=0;
+       for(int i=0;i<arr.length;i++){
+           sum +=arr[i];
+           count++;
+       }
+        
+       return (double)sum/count;
+    }
+}
