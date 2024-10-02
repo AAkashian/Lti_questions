@@ -1,0 +1,265 @@
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+            Scanner sc=new Scanner (System.in);
+        int size=sc.nextInt();
+        int idx=0;
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int element=sc.nextInt();
+        for(int i=0;i<size;i++){
+            if(arr[i]==element){
+                idx=i;
+                System.out.println("Found at index "+i);
+            }
+        }
+    }
+}
+
+// You are using Java
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+            Scanner sc=new Scanner (System.in);
+        int size=sc.nextInt();
+        int idx=0;
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+       bubbelsort(arr);
+        for(int i=0;i<size;i++){
+           System.out.println(arr[i]);
+        }
+    }
+    static void bubbelsort(int arr[]){
+        int n=arr.length;
+        for(int i=0;i<n-1;i++){
+           for(int j=0;j<n-1-i;j++){
+            if(arr[j]>arr[j+1]){
+                int temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+          } 
+        }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner (System.in);
+        int size=sc.nextInt();
+        sc.nextLine();
+        String arr[]=new String[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextLine();
+        }
+       for(int i=0;i<size-1;i++){
+         for(int j=0;j<size-1;j++){
+          if(arr[j].compareTo(arr[j+1])>0){
+              String temp=arr[j];
+              arr[j]=arr[j+1];
+              arr[j+1]=temp;
+          } 
+        }  
+       }
+       for(String str:arr){
+           System.out.println(str);
+       }
+    }
+}
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner (System.in);
+        String str=sc.nextLine();
+        boolean b=false;
+        int idx=0;
+        char arr[]=str.toCharArray();
+        char ch=sc.next().charAt(0);
+        for(char i=0;i<arr.length;i++){
+          if(arr[i]==ch){
+              b=true;
+              idx=i;
+          }
+          
+        }
+        if(b==true){
+          System.out.println("Found at index "+idx);
+          }else{
+              System.out.println("Not Found"); 
+          }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.next();
+        String str2=sc.next();
+        char arr1[]=str1.toCharArray();
+         char arr2[]=str2.toCharArray();
+         Arrays.sort(arr1);
+         Arrays.sort(arr2);
+         String ans1=Arrays.toString(arr1);
+         String ans2=Arrays.toString(arr2);
+         if(ans1.equals(ans2)){
+            System.out.println("Anagrams"); 
+         }else{
+             System.out.println("Not Anagrams"); 
+         }
+    }
+}
+
+// You are using Java
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.nextLine();
+        char[] arr=str1.toCharArray();
+        for(int i=0;i<arr.length;i=i+2){
+            char ch=arr[i];
+            arr[i]=Character.toUpperCase(ch);
+        }
+        System.out.println(new String(arr));
+       
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine().toLowerCase();
+       Set<Character> hset=new HashSet<>();
+       for(char ch: str.toCharArray()){
+           if(Character.isLetter(ch)){
+           hset.add(ch);
+           }
+       }
+       if(hset.size()==26){
+           System.out.println("Pangram");
+       }else{
+         System.out.println("Not Pangram");  
+       }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        String[] arr=str.split(" ");
+        for(int i=arr.length-1;i>=0;i--){
+            System.out.println(new String(arr[i]+" "));
+        }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+       StringBuilder sb=new StringBuilder();
+       sb.append(str);
+       sb.reverse();
+       String ans=sb.toString();
+       if(str.equals(ans)){
+           System.out.println("Palindrome");
+       }else{
+          System.out.println("Not Palindrome"); 
+       }
+    } 
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        int []count=new int[26];
+        for(int i=0;i<str.length();i++){
+            char ch=str.charAt(i);
+            count[ch-'a']++;
+        }
+         for(int i=0;i<count.length;i++){
+            if(count[i]>0){
+                System.out.println((char)(i+'a')+": "+count[i]);
+            }
+        }
+    }
+    
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String input=sc.nextLine();
+        String inputString[]=input.split(" ");
+        int []arr=new int[inputString.length];
+        
+        for(int i=0;i<arr.length;i++){
+            arr[i]=Integer.parseInt(inputString[i]);
+        }
+        
+       int largest=LargestElementFinder(arr);
+       System.out.println("Largest Element: "+largest);
+    }
+    static int LargestElementFinder(int arr[]){
+        int largest=arr[0];
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>largest){
+                largest=arr[i];
+            }
+        }
+        return largest;
+    }
+}
+
+// You are using Java
+import java.util.*;
+class a{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String input=sc.nextLine();
+        String inputString[]=input.split(" ");
+        int []arr=new int[inputString.length];
+        
+        for(int i=0;i<arr.length;i++){
+            arr[i]=Integer.parseInt(inputString[i]);
+        }
+        double ans=calculateAverage(arr);
+        System.out.println("Average: "+ans);
+         
+    }
+    static double calculateAverage(int []arr){
+        double avarage=0;
+        int sum=0,count=0;
+       for(int i=0;i<arr.length;i++){
+           sum +=arr[i];
+           count++;
+       }
+        
+       return (double)sum/count;
+    }
+}
