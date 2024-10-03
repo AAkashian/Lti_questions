@@ -32,7 +32,7 @@ public class Main{
 }
 
 
-// You are using Java
+// WITH_OUT Getter and Setter
 import java.util.*;
 class Student{
     private String name;
@@ -63,6 +63,57 @@ public class Main{
      
     //   System.out.println(s1.name+" "+s1.age);
     //   System.out.println(s2.name+" "+s2.age);
+    
+    s1.printDetails();
+    s2.printDetails();
+    }
+}
+
+// Using GETTER & SETTER
+import java.util.*;
+class Student{
+    private String name;
+    private int age;
+    
+    public Student(int ag,String nam){
+        this.name=nam;
+        this.age=ag;
+    }
+    
+    public void setName(String nam){
+        this.name=nam;
+    }
+     public void setAge(int ag){
+        this.age=ag;
+    }
+    public String getName(){
+       return name;
+    }
+    public int getAge(){
+       return age;
+    }
+    
+     public void printDetails(){
+        System.out.println(name+" "+age);
+    }
+
+    
+}
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        
+        String nam1=sc.nextLine();
+        int ag1=sc.nextInt();
+        sc.nextLine();
+        String nam2=sc.nextLine();
+        int ag2=sc.nextInt();
+        
+        Student s1=new Student(ag1,nam1);
+        Student s2=new Student(ag2,nam2);
+     
+    s1.setName("RAJ");
+    s1.setAge(20);
     
     s1.printDetails();
     s2.printDetails();
