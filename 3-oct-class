@@ -119,3 +119,147 @@ public class Main{
     s2.printDetails();
     }
 }
+
+
+// You are using Java
+import java.util.*;
+
+class Student {
+    private String name;
+    private int age;
+    private long phoneNo;
+
+    public Student(String name, int age, long phoneNo) {
+        this.name = name;
+        this.age = age;
+        this.phoneNo = phoneNo;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setPhoneNo(long phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public long getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void printDetails() {
+        System.out.println(name + " " + age + " " + phoneNo);
+    }
+}
+
+public class Main {
+    private static Student[] students;
+    private static int count = 0;
+
+    public static void addStudent(Student student) {
+        if (count < students.length) {
+            students[count++] = student;
+        } else {
+            System.out.println("Array is full. Cannot add more students.");
+        }
+    }
+
+    public static void updateStudent(int index, Student student) {
+        if (index >= 0 && index < count) {
+            students[index] = student;
+        } else {
+            System.out.println("Invalid index. Cannot update student.");
+        }
+    }
+
+    public static void displayStudents() {
+        for (int i = 0; i < count; i++) {
+            students[i].printDetails();
+        }
+    }
+
+    public static void removeStudent(int index) {
+        if (index >= 0 && index < count) {
+            for (int i = index; i < count - 1; i++) {
+                students[i] = students[i + 1];
+            }
+            students[--count] = null;
+        } else {
+            System.out.println("Invalid index. Cannot remove student.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        students = new Student[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter Name: ");
+            String name = sc.next();
+            System.out.print("Enter age: ");
+            int age = sc.nextInt();
+            System.out.print("Enter phone number: ");
+            long phoneNo = sc.nextLong();
+            students[i] = new Student(name, age, phoneNo);
+        }
+
+        while (true) {
+            System.out.println("1. Add Student");
+            System.out.println("2. Update Student");
+            System.out.println("3. Display Students");
+            System.out.println("4. Remove Student");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int userChoice = sc.nextInt();
+
+            switch (userChoice) {
+                case 1:
+                    System.out.print("Enter name: ");
+                    String name = sc.next();
+                    System.out.print("Enter age: ");
+                    int age = sc.nextInt();
+                    System.out.print("Enter phone number: ");
+                    long phoneNo = sc.nextLong();
+                    addStudent(new Student(name, age, phoneNo));
+                    break;
+                case 2:
+                    System.out.print("Enter index to update: ");
+                    int index = sc.nextInt();
+                    System.out.print("Enter new name: ");
+                    name = sc.next();
+                    System.out.print("Enter new age: ");
+                    age = sc.nextInt();
+                    System.out.print("Enter new phone number: ");
+                    phoneNo = sc.nextLong();
+                    updateStudent(index, new Student(name, age, phoneNo));
+                    break;
+                case 3:
+                    displayStudents();
+                    break;
+                case 4:
+                    System.out.print("Enter index to remove: ");
+                    index = sc.nextInt();
+                    removeStudent(index);
+                    break;
+                case 5:
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
+
