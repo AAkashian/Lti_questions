@@ -1,0 +1,149 @@
+// You are using Ja
+import java.util.*;
+class Student{
+    private final String name;
+    private final int grades[];
+    
+    public Student(String name,int []grades){
+        this.name=name;
+        this.grades=grades;
+    }
+    
+    public String getNames(){
+        return name;
+    }
+    public int[] getGrades(){
+        return grades;
+    }
+    
+    static double claAvg(int arr[]){
+        int sum=0;
+        for( int i=0;i<arr.length;i++){
+            sum += arr[i];
+        }
+      return (double)sum/arr.length;  
+    }
+}
+class Main{
+    public static void main(String[] args){
+       Scanner sc=new Scanner(System.in);
+       String str=sc.nextLine();
+       
+       String [] parts=str.split(" ");
+       
+        String name=parts[0]; 
+       
+       int [] grades=new int[parts.length-1];
+       
+       for(int i=1;i<parts.length;i++){
+           grades[i-1]=Integer.parseInt(parts[i]);
+       }
+       
+       Student s1=new Student(name,grades);
+       System.out.printf("Student: %s, Average Grade: %.1f",s1.getNames(),s1.claAvg(grades));
+    }
+}
+
+// You are using Java
+// You are using Ja
+import java.util.*;
+class Bank{
+    private final String name;
+    private  double balance;
+    //private final String withdral;
+   
+    
+    public Bank(String name,double balance){
+        this.name=name;
+        this.balance=balance;
+    }
+    
+    public String getName(){
+        return name;
+    }
+     public double getBalance(){
+        return balance;
+    }
+    
+     double deposite(double deposite){
+      return  balance += deposite; 
+    }
+     double withdral(double withdral){
+      return balance -=withdral;
+    }
+}
+class Main{
+    public static void main(String[] args){
+       Scanner sc=new Scanner(System.in);
+       
+       String name=sc.next();
+       double initial=sc.nextDouble();
+       
+       Bank acc=new Bank(name,initial);
+       
+       String deposite=sc.next();
+       double before=sc.nextDouble();
+       acc.deposite(before);
+       
+       String withdral=sc.next();
+       double after=sc.nextDouble();
+       acc.withdral(after);
+       
+       System.out.printf("Account Holder: %s, Final balance: %.1f",acc.getName(),acc.getBalance());
+      }
+}
+
+// You are using Java
+import java.util.*;
+class Day{
+    private final String[] arr={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+    private int day;
+    
+    public Day(int day){
+        this.day=day;
+    }
+    
+    public String getDay(){
+        return this.arr[this.day-1];
+    }
+    
+}
+class Main{
+    public static void main(String[] args){
+       Scanner sc=new Scanner(System.in);
+       
+       int day_num=sc.nextInt();
+       
+       Day dd=new Day(day_num);
+       System.out.printf("Day is %s",dd.getDay());
+       }
+}
+
+
+// You are using Java
+import java.util.*;
+class Area{
+    private int length;
+    private int width;
+    
+    public Area(int length,int width){
+        this.length=length;
+        this.width=width;
+    }
+    
+    public double calculate(int length,int width){
+       return (double)length*width; 
+    }
+}
+class Main{
+    public static void main(String[] args){
+       Scanner sc=new Scanner(System.in);
+       
+       int length=sc.nextInt();
+       int width=sc.nextInt();
+       
+       Area obj=new Area(length,width);
+       
+       System.out.printf("Area of the Rectangle: %.1f",obj.calculate(length,width));
+       }
+}
