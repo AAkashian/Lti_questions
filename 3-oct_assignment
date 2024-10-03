@@ -147,3 +147,63 @@ class Main{
        System.out.printf("Area of the Rectangle: %.1f",obj.calculate(length,width));
        }
 }
+
+//---------------------------------------------BYPASS(Section_2)-------------------------------------------------
+// You are using Java
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        
+        String str1=sc.nextLine();
+        String str2=sc.nextLine();
+        
+        String ans=str.replaceAll(str1,str2);
+        System.out.println(ans);
+    }
+}
+// You are using Java
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+       try{
+          int num=Integer.parseInt(str);
+          System.out.println("Parsed integer: "+num);
+       }catch(NumberFormatException e){
+            System.out.println("Error: Invalid input, not an integer");
+       }
+        
+    }   
+}
+
+// You are using Java
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        
+        String str1=sc.nextLine();
+        String str2=sc.nextLine();
+        
+        System.out.println(str1+str2);
+    }
+    
+}
+
+// You are using Java
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        
+        String str1=sc.nextLine();
+        String str2=sc.nextLine();
+        
+        System.out.println(str1.length());
+        System.out.println(str2.length());
+    }
+    
+}
