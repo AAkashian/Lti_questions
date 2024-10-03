@@ -205,5 +205,157 @@ class Main{
         System.out.println(str1.length());
         System.out.println(str2.length());
     }
-    
+}
+---------------------------------------------ORIGINAL ONE-------------------------------------------------
+import java.util.*;
+
+class StringModifier {
+    private String str;
+
+    // Constructor to initialize the string
+    public StringModifier(String str) {
+        if (str.isEmpty()) {
+            throw new IllegalArgumentException("String should not be empty");
+        }
+        this.str = str;
+    }
+
+    // Method to modify the string
+    public void modifyString(char oldChar, char newChar) {
+        str = str.replace(oldChar, newChar);
+    }
+
+    // Method to get the modified string
+    public String getString() {
+        return str;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Reading inputs
+        String inputString = sc.nextLine();
+        char oldChar = sc.next().charAt(0);
+        char newChar = sc.next().charAt(0);
+
+        // Creating an instance of StringModifier
+        StringModifier stringModifier = new StringModifier(inputString);
+
+        // Modifying the string
+        stringModifier.modifyString(oldChar, newChar);
+
+        // Printing the modified string
+        System.out.println(stringModifier.getString());
+    }
+}
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+
+        try {
+            int parsedInteger = Integer.parseInt(input);
+            System.out.println("Parsed integer: " + parsedInteger);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid input, not an integer");
+        }
+    }
+}
+import java.util.*;
+
+// Base class
+class StringConcatenator {
+    protected String str1;
+    protected String str2;
+
+    // Constructor to initialize the strings
+    public StringConcatenator(String str1, String str2) {
+        if (str1.isEmpty() || str2.isEmpty()) {
+            throw new IllegalArgumentException("Strings should not be empty");
+        }
+        this.str1 = str1;
+        this.str2 = str2;
+    }
+
+    // Method to concatenate the strings
+    public String concatenate() {
+        return str1 + str2;
+    }
+}
+
+// Derived class
+class AdvancedStringConcatenator extends StringConcatenator {
+
+    // Constructor to initialize the strings
+    public AdvancedStringConcatenator(String str1, String str2) {
+        super(str1, str2);
+    }
+
+    // Additional functionality can be added here if needed
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Reading inputs
+        String str1 = sc.nextLine();
+        String str2 = sc.nextLine();
+
+        // Creating an instance of AdvancedStringConcatenator
+        AdvancedStringConcatenator concatenator = new AdvancedStringConcatenator(str1, str2);
+
+        // Printing the concatenated string
+        System.out.println(concatenator.concatenate());
+    }
+}
+
+import java.util.*;
+
+// Base class
+class StringProcessor {
+    public int getLength(String str) {
+        if (str.isEmpty()) {
+            throw new IllegalArgumentException("String should not be empty");
+        }
+        return str.length();
+    }
+}
+
+// Derived class
+class AdvancedStringProcessor extends StringProcessor {
+    @Override
+    public int getLength(String str) {
+        return super.getLength(str);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<String> strings = new ArrayList<>();
+
+        // Reading inputs until an empty line is encountered
+        while (sc.hasNextLine()) {
+            String input = sc.nextLine();
+            if (input.isEmpty()) {
+                break;
+            }
+            strings.add(input);
+        }
+
+        // Creating an instance of AdvancedStringProcessor
+        AdvancedStringProcessor processor = new AdvancedStringProcessor();
+
+        // Calculating and printing the length of each string
+        for (String str : strings) {
+            System.out.println(processor.getLength(str));
+        }
+    }
 }
