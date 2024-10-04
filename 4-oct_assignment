@@ -128,34 +128,34 @@ class Main{
 }
 
 
-import java.util.Scanner;
-class InvalidDepositException extends Exception {
-    public InvalidDepositException(String message) {
-        super(message);
-    }
+// You are using Java
+import java.util.*;
+
+class userDefinedexception extends Exception{
+  public userDefinedexception(String msg){
+      super(msg);
+  } 
 }
-public class BankDeposit {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter deposit amount:");
-
-        try {
-            double amount = scanner.nextDouble();
-            processDeposit(amount);
-        } catch (InvalidDepositException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Error: Invalid input");
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        try{
+           double amount=sc.nextDouble();
+           process(amount);
+        }catch(userDefinedexception e){
+           System.out.println(e.getMessage()); 
+        }
+        catch(Exception e){
+           System.out.println("Error: Invalid"); 
         }
     }
-
-    public static void processDeposit(double amount) throws InvalidDepositException {
-        if (amount < 500 || amount < 0) {
-            throw new InvalidDepositException("Error: please enter a valid amount");
-        } else if (amount > 100000) {
-            throw new InvalidDepositException("Error: Amount limit exceeded enter less than 100000");
-        } else {
-            System.out.println(amount + " deposited successfully in your bank account");
+public static void process(double amount) throws userDefinedexception {
+        if(amount<500 || amount<0){
+            throw new userDefinedexception("Error:please enter a valid amount");
+        }else if(amount>100000){
+            throw new userDefinedexception("Error:Amount limit exceeded enter less than 100000"); 
+        }else{
+            System.out.println(amount+"deposited successfully in your bank account"); 
         }
-    }
+   }
 }
