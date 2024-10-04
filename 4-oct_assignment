@@ -1,3 +1,133 @@
+// You are using Java
+class School{
+    void learn(){
+      System.out.println("Learning is happening in school!");  
+    }
+    void provideResources(){
+      System.out.println("School provides resources for learning.");  
+    }
+}
+class Student extends School{
+    void attendClasses(){
+      System.out.println("Student is attending classes.");  
+    }
+    void completeAssignments(){
+       System.out.println("Student is completing assignments."); 
+    }
+}
+class Main{
+    public static void main(String[] args){
+       Student st1=new Student();
+       st1.learn();
+       st1.provideResources();
+       st1.attendClasses();
+       st1.completeAssignments();
+    }
+}
+
+// You are using Java
+class GrandFather{
+    String name;
+    public GrandFather(String nam){
+        this.name=nam;
+    }
+    void sayHello(){
+      System.out.println("Hello from GrandFather"+name+"!");  
+    }
+   
+}
+class Father extends GrandFather{
+    String name1;
+    int age;
+    public Father(String nam,int ag){
+        super(nam);
+        this.name1=nam;
+        this.age=ag;
+    }
+    void introduce(){
+      System.out.println("I am "+name1+ ", son of "+name+",aged"+age);  
+    }
+    
+}
+class Main{
+    public static void main(String[] args){
+       Father ff=new Father("John",45);
+       ff.name="William";
+       ff.sayHello();
+       ff.introduce();
+    }
+}
+
+
+// You are using Java
+import java.util.Scanner;
+class Operation{
+    int n1,n2;
+    String str1,str2;
+
+    void add(int n1,int n2){
+        int ans=n1+n2;
+      System.out.println("The sum of "+n1+" and "+n2+" is:"+ans);  
+    }
+    void add(String str1,String str2){
+      System.out.println("Combined string: "+str1+"and"+str2+"is: "+str1+str2);  
+    }
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int num1=sc.nextInt();
+        int num2=sc.nextInt();
+        sc.nextLine();
+        String str1=sc.nextLine();
+        String str2=sc.nextLine();
+        
+        Operation obj=new Operation();
+        
+        obj.add(num1,num2);
+        obj.add(str1,str2);
+        
+       
+    }
+}
+
+
+// You are using Java
+class Car{
+    void startEngine(){
+       System.out.println("Car engine started!"); 
+    }
+    void stopEngine(){
+        System.out.println("Car engine stopped!"); 
+    }
+}
+    class Swift extends Car{
+       void openSunroof(){
+            System.out.println("Swift sunroof opened!"); 
+       } 
+    }
+
+    class Honda extends Car{
+        void activateCruiseControl(){
+            System.out.println("Honda cruise control activated!"); 
+       } 
+    }
+
+class Main{
+    public static void main(String[] args){
+        Swift obj = new Swift();
+        Honda obj2= new Honda();
+        obj.startEngine();
+        obj.openSunroof();
+        obj.startEngine();
+        obj2.activateCruiseControl();
+        obj2.stopEngine();
+        obj2.stopEngine();
+        
+    }
+}
+
+
 import java.util.Scanner;
 class InvalidDepositException extends Exception {
     public InvalidDepositException(String message) {
