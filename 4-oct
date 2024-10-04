@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class InvalidDepositException extends Exception {
+    public InvalidDepositException(String message) {
+        super(message);
+    }
+}
+public class BankDeposit {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter deposit amount:");
+
+        try {
+            double amount = scanner.nextDouble();
+            processDeposit(amount);
+        } catch (InvalidDepositException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input");
+        }
+    }
+
+    public static void processDeposit(double amount) throws InvalidDepositException {
+        if (amount < 500 || amount < 0) {
+            throw new InvalidDepositException("Error: please enter a valid amount");
+        } else if (amount > 100000) {
+            throw new InvalidDepositException("Error: Amount limit exceeded enter less than 100000");
+        } else {
+            System.out.println(amount + " deposited successfully in your bank account");
+        }
+    }
+}
