@@ -1,0 +1,38 @@
+======================================================ABSTRACTION==========================================
+import java.util.*;
+
+abstract class Payment{
+    abstract void makepayment();
+   public void PaymentDetails(){
+       System.out.println("Processing the payment details....");
+   } 
+}
+
+class creditPayment extends Payment{
+    @Override
+     void makepayment(){
+        System.out.println("Payment done using credit card");
+    }
+}
+class paypalPayment extends Payment{
+     @Override
+     public void makepayment(){
+        System.out.println("Payment done using credit card");
+    }
+}
+class bankTransferPayment extends Payment{
+     @Override
+    public void makepayment(){
+        System.out.println("Payment done using credit card");
+    }
+}
+class Main{
+    public static void main(String[] args){
+        Payment obj=new creditPayment();
+        Payment obj2=new paypalPayment();
+        Payment obj3=new bankTransferPayment();
+        obj.makepayment();
+        obj2.makepayment();
+        obj3.makepayment();
+    }
+}
