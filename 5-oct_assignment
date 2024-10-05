@@ -95,3 +95,29 @@ class A{
         System.out.println(hst.contains(d));
     }
 }
+---------------------------------------------------------------------------------------DO NOT USE RUNNABLE HEAR BCZ
+                                                                                       It will always call different 
+                                                                                       method at different time so output   
+                                                                                       will be not match.
+class EvenOddThreads{
+    static class EvenThread extends Thread{
+        public void run(){
+            for(int i=2;i<=100;i+=2){
+                System.out.println("Thread 1 (Even Numbers): "+i);
+            }
+        }
+    }
+     static class OddThread extends Thread{
+        public void run(){
+            for(int i=99;i>=1;i-=2){
+                System.out.println("Thread 2 (Odd Numbers): "+i);
+            }
+        }
+    }
+    public static void main(String[] args){
+        EvenThread even=new EvenThread();
+        OddThread odd=new OddThread();
+        even.start();
+        odd.start();
+    }
+}
