@@ -36,3 +36,6 @@ class Main{
         obj3.makepayment();
     }
 }
+
+CHECKED-checked at compiling time of the code
+UNCHECKED-can not checked at compile time(come at runtime)
