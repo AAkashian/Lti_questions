@@ -1,0 +1,43 @@
+// You are using Java
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+       
+        Set<Integer> hst=new HashSet<>();
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int i: arr){
+            hst.add(i);
+        }
+         ArrayList<Integer> list=new ArrayList<>(hst);
+        
+          System.out.println("Elements: "+list);
+    }
+}
+
+// You are using Java-------------------------------hidden is passed
+import java.util.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        
+        HashMap<String,String> hmp=new HashMap<>();
+        int n=sc.nextInt();
+        sc.nextLine();
+        
+        for(int i=0;i<n;i++){
+          String key=sc.nextLine();   
+          if(hmp.containsKey(key)){
+              System.out.println("Sorry! The provided ID already exists.");  
+          }else{
+               String Value=sc.nextLine();
+              hmp.put(key,Value);
+              System.out.println("Employee registered successfully with ID: "+key);
+          }  
+        }
+   } 
+}
