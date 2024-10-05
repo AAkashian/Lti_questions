@@ -41,3 +41,57 @@ class Main{
         }
    } 
 }
+
+import java.util.*;
+ 
+class main{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        Set<String> hset = new HashSet<>();
+        String input = sc.nextLine();
+        String[] values = input.split(" ");
+        for(String value:values)
+        {
+            hset.add(value);
+        }
+        for(String name:hset)
+        {
+            System.out.println(name);
+        }
+        int n = sc.nextInt();
+        Iterator<String> iterator = hset.iterator();
+        int count = 0;
+        while(iterator.hasNext() && count < n)
+        {
+            iterator.next();
+            iterator.remove();
+            count++;
+        }
+        // System.out.println()
+        System.out.println("Elements in the set after deletion: ");
+        for(String name: hset)
+        {
+            System.out.println(name);
+        }
+    }
+}
+
+// You are using Java
+import java.util.*;
+class A{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int c=sc.nextInt();
+        int d=sc.nextInt();
+        Set<Integer> hst=new HashSet<>();
+        hst.add(a);
+        hst.add(b);
+        System.out.println("Current elements in the HashSet: "+hst);
+        hst.remove(c);
+        System.out.println("Elements in the HashSet after removal: "+hst);
+        System.out.println(hst.contains(d));
+    }
+}
