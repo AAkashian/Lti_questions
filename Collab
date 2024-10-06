@@ -37,5 +37,31 @@ class Main{
     }
 }
 
+
+
+class main{
+    public static void main(String[] args)
+    {
+        try
+        {
+            m1();
+        }
+        catch(ArithmeticException | NullPointerException | ArrayIndexOutOfBoundsException e)
+        {
+            System.out.print(e.getMessage());
+        }
+    }
+    public static void m1() throws ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException
+    {
+        int a = 10;
+        int b = 1;
+        int res = a/b;
+        // String x = null;
+        // x.length();
+        int[] arr = {1,2,3,4};
+        int w = arr[6];
+    }
+}
+has context menu
 CHECKED-checked at compiling time of the code
 UNCHECKED-can not checked at compile time(come at runtime)
