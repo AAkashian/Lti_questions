@@ -1,0 +1,126 @@
+package model;
+
+import com.examly.springapp.exception.LowRankingException;
+
+public class Hotel {
+    // Private fields for the attributes
+    private int hotelId;
+    private String hotelName;
+    private String hotelLocation;
+    private float hotelRanking;
+    private boolean gymAvailable;
+    private boolean poolAvailable;
+    private boolean spaAvailable;
+
+    // Getter and setter methods
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public String getHotelLocation() {
+        return hotelLocation;
+    }
+
+    public void setHotelLocation(String hotelLocation) {
+        this.hotelLocation = hotelLocation;
+    }
+
+    public float getHotelRanking() {
+        return hotelRanking;
+    }
+
+    // Modified method to check for low ranking
+    public void setHotelRanking(float hotelRanking) throws LowRankingException {
+        if (hotelRanking < 4.0) {
+            throw new LowRankingException("Ranking must be at least 4.0.");
+        }
+        this.hotelRanking = hotelRanking;
+    }
+
+    public boolean isGymAvailable() {
+        return gymAvailable;
+    }
+
+    public void setGymAvailable(boolean gymAvailable) {
+        this.gymAvailable = gymAvailable;
+    }
+
+    public boolean isPoolAvailable() {
+        return poolAvailable;
+    }
+
+    public void setPoolAvailable(boolean poolAvailable) {
+        this.poolAvailable = poolAvailable;
+    }
+
+    public boolean isSpaAvailable() {
+        return spaAvailable;
+    }
+
+    public void setSpaAvailable(boolean spaAvailable) {
+        this.spaAvailable = spaAvailable;
+    }
+
+    // Main method to create hotel objects and display their details
+    public static void main(String[] args) {
+        try {
+            // Create two hotel instances
+            Hotel hotel1 = new Hotel();
+            Hotel hotel2 = new Hotel();
+
+            // Set attributes for hotel1
+            hotel1.setHotelId(1);
+            hotel1.setHotelName("Luxury Inn");
+            hotel1.setHotelLocation("New York");
+            hotel1.setHotelRanking(4.5f); // Valid ranking
+            hotel1.setGymAvailable(true);
+            hotel1.setPoolAvailable(true);
+            hotel1.setSpaAvailable(false);
+
+            // Set attributes for hotel2
+            hotel2.setHotelId(2);
+            hotel2.setHotelName("Budget Stay");
+            hotel2.setHotelLocation("Los Angeles");
+
+            // This line will throw LowRankingException
+            hotel2.setHotelRanking(3.0f); // Invalid ranking
+
+            hotel2.setGymAvailable(false);
+            hotel2.setPoolAvailable(true);
+            hotel2.setSpaAvailable(true);
+
+            // Print details of hotel1
+            System.out.println("Hotel ID: " + hotel1.getHotelId());
+            System.out.println("Hotel Name: " + hotel1.getHotelName());
+            System.out.println("Location: " + hotel1.getHotelLocation());
+            System.out.println("Ranking: " + hotel1.getHotelRanking());
+            System.out.println("Gym Available: " + hotel1.isGymAvailable());
+            System.out.println("Pool Available: " + hotel1.isPoolAvailable());
+            System.out.println("Spa Available: " + hotel1.isSpaAvailable());
+            System.out.println();
+
+            // Print details of hotel2
+            System.out.println("Hotel ID: " + hotel2.getHotelId());
+            System.out.println("Hotel Name: " + hotel2.getHotelName());
+            System.out.println("Location: " + hotel2.getHotelLocation());
+            System.out.println("Ranking: " + hotel2.getHotelRanking());
+            System.out.println("Gym Available: " + hotel2.isGymAvailable());
+            System.out.println("Pool Available: " + hotel2.isPoolAvailable());
+            System.out.println("Spa Available: " + hotel2.isSpaAvailable());
+        } catch (LowRankingException e) {
+            System.out.println(e.getMessage()); // Print error message
+        }
+    }
+}
