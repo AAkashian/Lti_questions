@@ -18,50 +18,56 @@ class main{
     }
 }
 
+
+
 import java.sql.*;
-import java.util.Scanner;
 class main{
-    public static void main(String[] args){
-            Scanner sc=new Scanner(System.in);
-       try{
-         Connection con=setConnection(); 
-         String create="Create table contacts(id Integer PRIMARY KEY,name varchar(100),email varchar(100),phone_number varchar(100),city varchar(100))";
-         PreparedStatement ps=con.prepareStatement(create);
-          ps.executeUpdate();
-         System.out.println("Table 'contacts' created successfully.");
-         insertData(sc);
-       }catch(SQLException e){
-           e.printStackTrace();
-       } 
-    
+    public static void main(String[] args)
+    {
+        try
+        {
+            createTable();
+            insert();
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
-    public static Connection setConnection() throws SQLException{
-     String url="jdbc:mysql://localhost/ri_db";
-     String user="test";
-     String pass="test123";
-     Connection conObj=DriverManager.getConnection(url,user,pass);
-     return conObj;
+    public static Connection createConnection() throws SQLException
+    {
+        String url = "jdbc:mysql://localhost/ri_db";
+        String user = "test";
+        String pwd = "test123";
+        Connection con = DriverManager.getConnection(url,user,pwd);
+        return con;
     }
-     public static void insertData(Scanner sc) throws SQLException{
-         Connection con=setConnection();
-        String insertQuery="INSERT INTO contacts(id,name,email,phone_number,city) VALUES(?,?,?,?,?)";
-        PreparedStatement stmt=con.prepareStatement(insertQuery);
-        int id=1;
-        String name="Ravi Kumar";
-        String email="ravi@example.com";
-        String phone_number="9876543210";
-        String city="Delhi";
-        
-          stmt.setInt(1,id);
-          stmt.setString(2,name);
-          stmt.setString(3,email);
-          stmt.setString(4,phone_number);
-          stmt.setString(5,city);
-          
-        stmt.executeUpdate();
+    public static void createTable() throws SQLException
+    {
+        Connection con  = createConnection();
+        String query="create table contacts (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), email VARCHAR(100), phone_number VARCHAR(100), city VARCHAR(100));";
+        Statement stmt = con.createStatement();
+        stmt.executeUpdate(query);
+        System.out.println("Table 'contacts' created successfully.");
+        con.close();
+    }
+    public static void insert() throws SQLException
+    {
+        Connection con = createConnection();
+        String insertQuery = "insert into contacts(name, email, phone_number, city) values(?,?,?,?)";
+        PreparedStatement ptmt = con.prepareStatement(insertQuery);
+        ptmt.setString(1,"Aditya");
+        ptmt.setString(2,"aditya@example.com");
+        ptmt.setString(3,"7978073542");
+        ptmt.setString(4,"Bhubaneswar");
+        ptmt.executeUpdate();
         System.out.println("Data inserted successfully.");
-     }
+        ptmt.close();
+    }
 }
+
+
+      
 
 
 import java.sql.*;
