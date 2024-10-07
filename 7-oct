@@ -138,3 +138,42 @@ class main{
       }
    }
 }
+
+
+num-5
+num-6
+
+import java.sql.*;
+class Main{
+    public static void main(String[] args){
+        try{
+            Connection con=setConnection();
+            display();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static Connection setConnection() throws SQLException{
+        String url="jdbc:mysql://localhost/ri_db";
+        String user="test";
+        String pass="test123";
+        return DriverManager.getConnection(url,user,pass);
+    }
+    public static void display() throws SQLException{
+        Connection con=setConnection();
+        String qury="SELECT * FROM Employee";
+        Statement stmt=con.createStatement();
+        ResultSet rs=stmt.executeQuery(qury);
+        System.out.println("Employee Records: ");
+       System.out.printf("%-5s %-20s %-10s %-20s%n","Id","Name","Salary","Department");
+        while(rs.next()){
+            int id=rs.getInt(1);
+            String name=rs.getString(2);
+            double sal=rs.getDouble(3);
+            String dept=rs.getString(4);
+          System.out.printf("%-5d %-20s %-10.1f %-20s%n",id,name,sal,dept);  
+        }
+        
+    }
+    
+}
