@@ -146,8 +146,58 @@ class main{
 }
 
 
-num-5
-num-6
+import java.sql.*;
+class Main{
+    public static void main(String[] args){
+        try{
+            Connection con=setConnection();
+            String create="create Table Employee(id INTEGER PRIMARY KEY,name varchar(100),salary DECIMAL(10,2),department varchar(50))";
+            PreparedStatement pstmt=con.prepareStatement(create);
+            pstmt.executeUpdate();
+            insertData();
+            display();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static Connection setConnection() throws SQLException{
+        String url="jdbc:mysql://localhost/ri_db";
+        String user="test";
+        String pass="test123";
+        return DriverManager.getConnection(url,user,pass);
+    }
+    public static void insertData() throws SQLException{
+       Connection con=setConnection();
+       String insertQuery="INSERT INTO Employee(id,name,salary,department) VALUES"+
+                            "(1, 'Rajesh Kumar',50000.00,'Engineering'),"+
+                            "(2,'Sunitha Patel', 60000.00,'Human Resources'),"+
+                            "(3,'Amit Singh',55000.00,'Marketing'),"+
+                            "(4,'Priya Sharma',52000.00,'Finance'),"+
+                            "(5,'Deepak Varma',58000.00,'Sales');";
+       PreparedStatement pstmt=con.prepareStatement(insertQuery);
+      pstmt.executeUpdate();
+    
+    }
+    public static void display() throws SQLException{
+        Connection con=setConnection();
+        String qury="SELECT * FROM Employee";
+        Statement stmt=con.createStatement();
+        ResultSet rs=stmt.executeQuery(qury);
+       
+       System.out.println("Contents of the Employee table: ");
+        while(rs.next()){
+            int id=rs.getInt(1);
+            String name=rs.getString(2);
+            double sal=rs.getDouble(3);
+            String dept=rs.getString(4);
+          System.out.printf("ID:  %d,Name: %s,Salary: %.2f,Department: %s",id,name,sal,dept);  
+          System.out.println();
+        }
+        
+    }
+    
+}
+
 
 import java.sql.*;
 class Main{
