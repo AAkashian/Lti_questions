@@ -1,0 +1,174 @@
+import java.sql.*;
+class Main{
+    public static void main(String[] args){
+      try{
+          Connection con=createConnection();
+            insert();
+      }catch(SQLException e){
+          e.printStackTrace();
+      }  
+    }
+    public static Connection createConnection() throws SQLException{
+        String url="jdbc:mysql://localhost/ri_db";
+        String user="test";
+        String pass="test123";
+       Connection con=DriverManager.getConnection(url,user,pass); 
+       return con;
+    }
+    public static void createTable() throws SQLException{
+       Connection con=createConnection();
+       String qury="create table ShoppingList (ProductId varchar(20),ProductName varchar(100),Price decimal(10,2),Status ENUM('Available','Not Available'));";
+      try{
+           Statement stmt=con.createStatement();
+           stmt.executeUpdate(qury);
+      }catch(SQLException e){
+         System.out.println(e.getMessage()); 
+      }
+    }
+     public static void insert() throws SQLException{
+         Connection con=createConnection();
+          createTable();
+       String qury="insert into ShoppingList(ProductId,ProductName,Price,Status) values"
+                      +"('F001','Fan',100.00,'Available'),"
+                      +"('WM001','Washing Machine',200.00,'Not Available'),"
+                      +"('L001','Laptop',300.00,'Available'),"
+                      +"('TV001','Television',400.00,'Available'),"
+                      +"('AC001','Air Conditioner',500.00,'Not Available');";
+        PreparedStatement pstmt=con.prepareStatement(qury);  
+        int row=pstmt.executeUpdate();
+        if(row>0){
+            display();
+        }
+        con.close();
+        pstmt.close();
+     }
+     public static void display() throws SQLException{
+        Connection con=createConnection(); 
+        Statement st=con.createStatement();
+        String qury="select * from ShoppingList order by ProductId;";
+        ResultSet rs=st.executeQuery(qury);
+       while(rs.next()){
+           String id=rs.getString(1);
+           String proc=rs.getString(2);
+           double price=rs.getDouble(3);
+           String status=rs.getString(4);
+           System.out.printf("ProductId: "+id+", ProductName: "+proc+", Price: %.2f",price);
+           System.out.printf(", Status:"+status);
+       } 
+     }
+}
+
+
+ import java.sql.*;
+
+class hello
+{
+    public void str()
+    {
+        System.out.println("this List");
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+      try{
+          Connection con=createConnection();
+            display();
+      }catch(SQLException e){
+          e.printStackTrace();
+      }  
+    }
+    public static Connection createConnection() throws SQLException{
+        String url="jdbc:mysql://localhost/ri_db";
+        String user="test";
+        String pass="test123";
+       Connection con=DriverManager.getConnection(url,user,pass); 
+       return con;
+    }
+    public static void createTable() throws SQLException{
+       Connection con=createConnection();
+       String qury="create table ShoppingList (ProductId varchar(20),ProductName varchar(100),Price decimal(10,2),Status ENUM('Available','Not Available'));";
+      try{
+           Statement stmt=con.createStatement();
+           stmt.executeUpdate(qury);
+      }catch(SQLException e){
+         System.out.println(e.getMessage()); 
+      }
+    }
+
+     public static void display() throws SQLException{
+        Connection con=createConnection(); 
+        Statement st=con.createStatement();
+        String qury="select * from ShoppingList order by Price desc;";
+        ResultSet rs=st.executeQuery(qury);
+        System.out.println("Products sorted by price in Highest to lower order:");
+       while(rs.next()){
+           String id=rs.getString(1);
+           String proc=rs.getString(2);
+           double price=rs.getDouble(3);
+           String status=rs.getString(4);
+           System.out.printf("ShoppingProduct{productId='"+id+"', productName='"+proc+"', price=%.1f",price);
+           System.out.printf(", status='"+status+"'}");
+           System.out.println();
+       } 
+     }
+}
+
+
+
+import java.sql.*;
+
+class hello
+{
+    public void str()
+    {
+        System.out.println("this List");
+    }
+}
+
+class Main{
+    public static void main(String[] args){
+      try{
+          Connection con=createConnection();
+            display();
+      }catch(SQLException e){
+          e.printStackTrace();
+      }  
+    }
+    public static Connection createConnection() throws SQLException{
+        String url="jdbc:mysql://localhost/ri_db";
+        String user="test";
+        String pass="test123";
+       Connection con=DriverManager.getConnection(url,user,pass); 
+       return con;
+    }
+    public static void createTable() throws SQLException{
+       Connection con=createConnection();
+       String qury="create table ShoppingList (ProductId varchar(20),ProductName varchar(100),Price decimal(10,2),Status ENUM('Available','Not Available'));";
+      try{
+           Statement stmt=con.createStatement();
+           stmt.executeUpdate(qury);
+      }catch(SQLException e){
+         System.out.println(e.getMessage()); 
+      }
+    }
+
+     public static void display() throws SQLException{
+        Connection con=createConnection(); 
+        Statement st=con.createStatement();
+        String qury="select * from ShoppingList where Status = 'Available';";
+        ResultSet rs=st.executeQuery(qury);
+        System.out.println("Available products:");
+       while(rs.next()){
+           String id=rs.getString(1);
+           String proc=rs.getString(2);
+           double price=rs.getDouble(3);
+           String status=rs.getString(4);
+           System.out.printf("ShoppingProduct{productId='"+id+"', productName='"+proc+"', price=%.1f",price);
+           System.out.printf(", status='"+status+"'}");
+           System.out.println();
+       } 
+     }
+}
+
+    
