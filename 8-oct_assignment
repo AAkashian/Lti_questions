@@ -171,4 +171,202 @@ class Main{
      }
 }
 
-    
+import java.sql.*;
+import java.util.*;
+class demo{
+    public void str(){
+        System.out.println("this");
+    }
+}
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+            System.out.println("Products sorted by price in descending order:");
+        try{
+        Connection con=createConnection();
+        display();
+        displayRecord();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static Connection createConnection() throws SQLException{
+        String url="jdbc:mysql://localhost/ri_db";
+        String user="test";
+        String pass="test123";
+         Connection con=DriverManager.getConnection(url,user,pass);
+        return con;
+    }
+    public static void display() throws SQLException{
+        Connection con=createConnection();
+        String qury="SELECT * from ShoppingList order by Price desc";
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery(qury);
+        while(rs.next()){
+            String id=rs.getString(1);
+            String name=rs.getString(2);
+            double price=rs.getDouble(3);
+            String stat=rs.getString(4);
+            System.out.println("ShoppingProduct{productID='"+id+"', productName='"+name+"', price="+price+", status='"+stat+"'}");
+        }
+    }
+    public static void displayRecord() throws SQLException{
+        System.out.println(" ");
+        Connection con=createConnection();
+        String qury="SELECT * from ShoppingList where Status='Available'";
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery(qury);
+        System.out.println("Available products:");
+        while(rs.next()){
+            String id=rs.getString(1);
+            String name=rs.getString(2);
+            double price=rs.getDouble(3);
+            String stat=rs.getString(4);
+            System.out.println("ShoppingProduct{productID='"+id+"', productName='"+name+"', price="+price+", status='"+stat+"'}");
+        }
+    }
+}
+
+
+
+
+import java.util.*; import java.sql.*; 
+import java.util.*;
+import java.sql.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        try{
+            String url="jdbc:mysql://localhost/ri_db";
+            String user="test";
+            String pass="test123";
+            Connection con=DriverManager.getConnection(url,user,pass);
+            Statement st=con.createStatement();
+            int choice=sc.nextInt();
+           switch(choice){
+            case 1:
+                insert(con,st,sc);
+                break;
+            case 2:
+                display(con,st,sc);
+                break;
+            case 3:
+                update(con,st,sc);
+                break;
+            case 4:
+                delete(con,st,sc);
+                break;
+            case 5:
+                order(con,st,sc);
+                break;
+            case 6:
+                filter(con,st,sc);
+                break;
+          }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void display(Connection con,Statement st,Scanner sc) throws SQLException{
+      String qury="select * from Student";
+      ResultSet rs=st.executeQuery(qury);
+      while(rs.next()){
+          int id=rs.getInt(1);
+          String rname=rs.getString(2);
+          String course=rs.getString(3);
+          Double marks=rs.getDouble(4);
+          String address=rs.getString(5);
+          String email=rs.getString(6);
+          String ph=rs.getString(7);
+          System.out.println("StudentID: "+id+", Name: "+rname+", Course: "+course+", Marks: "+marks+", Address: "+address+", Email: "+email+" , Phone Number: "+ph);
+      }
+    }
+    public static void insert(Connection con,Statement st,Scanner sc) throws SQLException{
+        int id=sc.nextInt();
+        sc.nextLine();
+        String name=sc.nextLine();
+        String course=sc.nextLine();
+        Double marks=sc.nextDouble();
+        sc.nextLine();
+        String add=sc.nextLine();
+        String email=sc.nextLine();
+        String ph=sc.nextLine();
+        String qury="insert into Student values(?,?,?,?,?,?,?)";
+        PreparedStatement pstmt=con.prepareStatement(qury);
+         pstmt.setInt(1,id);
+         pstmt.setString(2,name);
+         pstmt.setString(3,course);
+         pstmt.setDouble(4,marks);
+         pstmt.setString(5,add);
+         pstmt.setString(6,email);
+         pstmt.setString(7,ph);
+        int row=pstmt.executeUpdate();
+        if(row>0){
+          System.out.println("Student inserted successfully.");  
+          display(con,st,sc);
+        }
+    }
+    public static void update(Connection con,Statement st,Scanner sc) throws SQLException{
+        String qury="Update Student set address=? where student_id=?";
+        int id=sc.nextInt();
+        sc.nextLine();
+        String add=sc.nextLine();
+        System.out.println("Enter new address: ");
+        PreparedStatement pstmt=con.prepareStatement(qury);
+         pstmt.setString(1,add);
+         pstmt.setInt(2,id);
+        int row=pstmt.executeUpdate();
+        if(row>0){
+         System.out.println("Student address updated successfully.");
+         display(con,st,sc);
+        }
+    }
+    public static void delete(Connection con,Statement st,Scanner sc) throws SQLException{
+        String qury="delete from Student where student_id=?";
+        int id=sc.nextInt();
+        PreparedStatement pstmt=con.prepareStatement(qury);
+         pstmt.setInt(1,id);
+        int row=pstmt.executeUpdate();
+        if(row>0){
+         System.out.println("Student deleted successfully.");
+         display(con,st,sc);
+        }
+    }
+    public static void order(Connection con,Statement st,Scanner sc) throws SQLException{
+        String qury="select * from Student ORDER BY marks DESC LIMIT 5";
+        PreparedStatement pstmt=con.prepareStatement(qury);
+         ResultSet rs=st.executeQuery(qury);
+         while(rs.next()){
+          int id=rs.getInt(1);
+          String rname=rs.getString(2);
+          String course=rs.getString(3);
+          Double marks=rs.getDouble(4);
+          String address=rs.getString(5);
+          String email=rs.getString(6);
+          String ph=rs.getString(7);
+          System.out.println("StudentID: "+id+", Name: "+rname+", Course: "+course+", Marks: "+marks+", Address: "+address+", Email: "+email+" , Phone Number: "+ph);
+      }
+      st.close();
+      pstmt.close();
+    }
+    public static void filter(Connection con,Statement st,Scanner sc) throws SQLException{
+        String qury="select * from Student where course_name='Chemistry'";
+        // String co=sc.nextLine();
+         PreparedStatement pstmt=con.prepareStatement(qury);
+        // pstmt.setString(1,co);
+        ResultSet rs=st.executeQuery(qury);
+         while(rs.next()){
+          int id=rs.getInt(1);
+          String rname=rs.getString(2);
+          String course=rs.getString(3);
+          Double marks=rs.getDouble(4);
+          String address=rs.getString(5);
+          String email=rs.getString(6);
+          String ph=rs.getString(7);
+          System.out.println("StudentID: "+id+", Name: "+rname+", Marks: "+marks+", Address: "+address+", Email: "+email+" , Phone Number: "+ph);
+      }
+      rs.close();
+    //   pstmt.close();
+    }
+}
+ 
