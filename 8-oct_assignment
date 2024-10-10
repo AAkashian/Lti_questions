@@ -282,6 +282,8 @@ class Main{
       }
     }
     public static void insert(Connection con,Statement st,Scanner sc) throws SQLException{
+        String qury="insert into Student values(?,?,?,?,?,?,?)";
+
         int id=sc.nextInt();
         sc.nextLine();
         String name=sc.nextLine();
@@ -291,8 +293,8 @@ class Main{
         String add=sc.nextLine();
         String email=sc.nextLine();
         String ph=sc.nextLine();
-        String qury="insert into Student values(?,?,?,?,?,?,?)";
-        PreparedStatement pstmt=con.prepareStatement(qury);
+        
+        
          pstmt.setInt(1,id);
          pstmt.setString(2,name);
          pstmt.setString(3,course);
@@ -300,6 +302,8 @@ class Main{
          pstmt.setString(5,add);
          pstmt.setString(6,email);
          pstmt.setString(7,ph);
+
+         PreparedStatement pstmt=con.prepareStatement(qury);
         int row=pstmt.executeUpdate();
         if(row>0){
           System.out.println("Student inserted successfully.");  
