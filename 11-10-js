@@ -1,0 +1,29 @@
+var currentInput=''
+var output
+
+document.querySelectorAll('button').forEach(button =>{
+    button.addEventListener('click',()=>{
+        var buttonText=button.textContent
+        if(!isNaN(buttonText)||'*/-+'.includes(buttonText)){
+            handleInput(buttonText)
+        }else if(buttonText==='='){
+             handelEquals();
+        }else if(buttonText==='C'){
+            currentInput=''
+            updateDisplay(0)
+        }
+    })
+});
+
+function handleInput(input){
+    currentInput=currentInput+input
+    updateDisplay(currentInput)
+}
+function handelEquals(){
+    output=eval(currentInput)
+    updateDisplay(output)
+}
+
+function updateDisplay(data){
+    display.textContent=data
+}
