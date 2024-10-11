@@ -1,3 +1,13 @@
+mul(){
+var a=document.getElementById("num1").value;
+var b=document.getElementById("num2").value;
+var product=document.getElementById("ProductResult");
+var res=a+b;
+product.textContent=`statement ${res}`;
+}
+
+
+
 function alertTriggered(){
     var fields=document.querySelectorAll('input');
     for(var i=0;i<fields.length;i++){
