@@ -185,3 +185,143 @@ class main{
 has context menu
 CHECKED-checked at compiling time of the code
 UNCHECKED-can not checked at compile time(come at runtime)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+import java.sql.*;
+class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+       try{
+        int choice=sc.nextInt();
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost/ri_db","test","test123");
+        Statement st=con.createStatement();
+        switch(choice){
+            case 1:
+                insert(con,st,sc);
+                break;
+            case 2:
+                update(con,st,sc);
+                break;
+            case 3:
+                delete(con,st,sc);
+                break;
+            case 4:
+                filter(con,st,sc);
+                break;
+            default:System.out.println("Invalid Choice");
+        }
+       }catch(SQLException e){
+           System.out.println(e.getMessage());
+       }
+    }public static void display(Connection con,Statement st,Scanner sc) throws SQLException{
+        String qury="select * from Associate";
+        ResultSet rs=st.executeQuery(qury);
+        while(rs.next()){
+            int id=rs.getInt(1);
+            String name=rs.getString(2);
+            int age=rs.getInt(3);
+            double sal=rs.getDouble(4);
+            String dept=rs.getString(5);
+            String deg=rs.getString(6);
+            String date=rs.getString(7);
+            System.out.printf("Id: "+id+", Name: "+name+", Age: "+age+" ,Salary: %.2f",sal);
+            System.out.println(", Department: "+dept+", Designation: "+deg+", Date:"+date);
+        }
+    }public static void insert(Connection con,Statement st,Scanner sc) throws SQLException{
+    String qury="insert into Associate values(?,?,?,?,?,?,?)";
+       int id=sc.nextInt(); 
+       sc.nextLine();
+       String name=sc.nextLine();
+        int age=sc.nextInt(); 
+        double sal=sc.nextDouble();
+        sc.nextLine();
+        String dept=sc.nextLine();
+        String deg=sc.nextLine();
+        String date=sc.nextLine();
+        PreparedStatement pstm=con.prepareStatement(qury);
+        pstm.setInt(1,id);
+        pstm.setString(2,name);
+        pstm.setInt(3,age);
+        pstm.setDouble(4,sal);
+        pstm.setString(5,dept);
+        pstm.setString(6,deg);
+        pstm.setString(7,date);
+        int row=pstm.executeUpdate();
+        if(row>0){
+            System.out.println("Inserted Successfully");
+            display(con,st,sc);
+        }
+    }public static void update(Connection con,Statement st,Scanner sc) throws SQLException{
+    String qury="update Associate set Salary=?,Department=? where AssociateId=?";
+       
+       int id=sc.nextInt(); 
+        double sal=sc.nextDouble();
+        sc.nextLine();
+        String dept=sc.nextLine();
+      
+        PreparedStatement pstm=con.prepareStatement(qury);
+        pstm.setInt(3,id);
+       
+        pstm.setDouble(1,sal);
+        pstm.setString(2,dept);
+        
+        int row=pstm.executeUpdate();
+        if(row>0){
+            System.out.println("Updated Successfully");
+            display(con,st,sc);
+        }
+    }
+    public static void delete(Connection con,Statement st,Scanner sc) throws SQLException{
+    String qury="delete from Associate  where AssociateId=?";
+       
+       int id=sc.nextInt(); 
+       
+      
+        PreparedStatement pstm=con.prepareStatement(qury);
+        pstm.setInt(1,id);
+       
+       
+        
+        int row=pstm.executeUpdate();
+        if(row>0){
+            System.out.println("Deleted Successfully");
+            display(con,st,sc);
+        }
+    }public static void filter(Connection con,Statement st,Scanner sc) throws SQLException{
+        String qury="select * from Associate where Department=?";
+        sc.nextLine();
+        String dep=sc.nextLine(); 
+        PreparedStatement pstm=con.prepareStatement(qury);
+         pstm.setString(1,dep);
+        ResultSet rs=pstm.executeQuery();
+        if(!rs.isBeforeFirst()){
+          System.out.println("No associates found in this department.");  
+        }else{
+        while(rs.next()){
+            int id=rs.getInt(1);
+            String name=rs.getString(2);
+            int age=rs.getInt(3);
+            double sal=rs.getDouble(4);
+            String dept=rs.getString(5);
+            String deg=rs.getString(6);
+            String date=rs.getString(7);
+            System.out.printf(""+id+", "+name+", "+age+", %.2f",sal);
+            System.out.println(", "+dept+", "+deg+", "+date);
+        }}
+    }
+}
