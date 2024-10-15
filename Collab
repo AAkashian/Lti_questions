@@ -1,3 +1,13 @@
+function count(){
+    var input=document.getElementById("text-area").value;
+    var count=0;
+    var array=input.split(" ");
+    document.getElementById("word-count").innerHTML="Word count: "+array.length;
+}
+
+
+
+
 import java.sql.*;
 import java.util.*;
 
