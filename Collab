@@ -1,3 +1,26 @@
+function convertCurrency() {
+    const currency = document.getElementById('currency').value;
+    const amount = document.getElementById('amount').value;
+   var ans=document.getElementById('result');
+    
+    let convertedAmount;
+
+    if (currency === 'usd') {
+        convertedAmount = amount * 74.6;
+       ans.innerHTML = `${amount} USD is equal to ${convertedAmount.toFixed(2)} INR`;
+    } else if (currency === 'inr') {
+        convertedAmount = amount * 0.013;
+       ans.innerHTML = `${amount} INR is equal to ${convertedAmount.toFixed(2)} USD`;
+    } else {
+        ans.innerHTML = 'Please select a valid currency';
+    }
+}
+
+
+
+
+
+
 function count(){
     var input=document.getElementById("text-area").value;
     var count=0;
