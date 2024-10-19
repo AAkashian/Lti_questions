@@ -1,0 +1,23 @@
+driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+            WebElement username=driver.findElement(By.xpath("//input[@placeholder='Username']"));
+            username.sendKeys("Admin");
+            WebElement pass = driver.findElement(By.xpath("//input[@placeholder='Password']"));
+            pass.sendKeys("admin123");
+            driver.findElement(By.xpath("//button[@type='submit']")).click();;
+            
+            String urll=driver.getCurrentUrl();
+
+              if(urll.contains("dashboard")){
+                    System.out.println("true");
+              }else{
+                System.out.println("false");
+              }
+        //    input.sendKeys("Selenium WebDriver",Keys.ENTER);
+        //     input.click();
+        //       driver.navigate().back();
+        //       driver.navigate().refresh();
+
+            //   String pageSrc=driver.getPageSource();
+            //   System.out.println(pageSrc);
+              
