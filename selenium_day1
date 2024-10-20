@@ -1,3 +1,8 @@
+driver.get("https://www.google.com");
+            driver.findElement(By.xpath("//textarea[@id='APjFqb']")).sendKeys("Akash",Keys.ENTER);;
+
+
+
 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 
             WebElement username=driver.findElement(By.xpath("//input[@placeholder='Username']"));
